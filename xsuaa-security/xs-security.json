@@ -1,0 +1,35 @@
+{
+  "xsappname" : "java",
+  "tenant-mode" : "shared",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "Display content"
+    },
+    {
+      "name": "$XSAPPNAME.read",
+      "description": "With this scope, USER can read products."
+    },
+    {
+      "name": "$XSAPPNAME.Callback",
+      "description": "With this scope set, the callbacks for tenant onboarding, offboarding and getDependencies can be called.",
+      "grant-as-authority-to-apps": [
+        "$XSAPPNAME(application,sap-provisioning,tenant-onboarding)"
+      ]
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Viewer",
+      "description": "View content",
+      "scope-references": [
+        "$XSAPPNAME.Display"
+      ]
+    }
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.cfapps.us10-001.hana.ondemand.com/**"
+    ]
+  }
+}

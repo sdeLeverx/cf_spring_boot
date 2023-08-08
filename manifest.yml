@@ -1,18 +1,27 @@
 ---
 applications:
   - name: java
-    random-route: true
+    instances: 1
+    memory: 500M
+    routes:
+      - route: java-grateful-toucan-ez.cfapps.us10-001.hana.ondemand.com
+    host: java-1.0.0.0.0
     path: ./target/java-0.0.1-SNAPSHOT.jar
-    memory: 1024M
     buildpacks:
       - sap_java_buildpack
     env:
       TARGET_RUNTIME: tomcat
       JBP_CONFIG_COMPONENTS: "jres: ['com.sap.xs.java.buildpack.jdk.SAPMachineJDK']"
+    services:
+      - javauaa
+      - saas-registry
   - name: web
-    random-route: true
+    routes:
+      - route: web-generous-crane-ut.cfapps.us10-001.hana.ondemand.com
     path: web
-    memory: 1024M
+    memory: 250M
+    services:
+      - javauaa
     env:
       destinations: >
         [
@@ -22,5 +31,4 @@ applications:
             "forwardAuthToken": true
           }
         ]
-    services:
-      - javauaa
+      TENANT_HOST_PATTERN: "^(.*)-web-generous-crane-ut.cfapps.us10-001.hana.ondemand.com"
