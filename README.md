@@ -1,21 +1,6 @@
-# cf_spring_boot
+# CF Spring boot
 
 Java application implemented using Java/Spring Boot.
-
-## Running project locally
-
-Use the package manager [maven](https://maven.apache.org/) to run locally.
-
-```bash
-# maven
-mvn clean install
-mvn spring-boot:run
-```
-
-## Open local application
-
-http://localhost:8080
-
 
 ## Deploying it to CF
 
