@@ -73,7 +73,15 @@ applications:
 Then, created instance of the Authorization and Trust Management Service
 
 ```bash
-cf create-service xsuaa application javauaa -c xs-security.json
+cf create-service xsuaa application javauaa -c xsuaa-security/xs-security.json
+cf create-service saas-registry application saas-registry -c saas-registry/config.json
+
+cf unbind-service java javauaa
+cf unbind-service java saas-registry
+cf unbind-service web javauaa
+
+cf delete-service javauaa
+cf delete-service saas-registry   
 
 cf update-service javauaa -c xs-security.json
 ```
