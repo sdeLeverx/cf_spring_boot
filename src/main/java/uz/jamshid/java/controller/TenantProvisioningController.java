@@ -28,9 +28,8 @@ public class TenantProvisioningController {
         String subscribedSubdomain = requestBody.get("subscribedSubdomain").asText();
 
         tenantProvisioningService.subscribeTenant(tenantId);
-        String subscriptionLink = HTTPS + subscribedSubdomain + APP_ROUTER_DOMAIN_NAME;
 
-        return ResponseEntity.status(200).body(subscriptionLink);
+        return ResponseEntity.status(200).body(HTTPS + subscribedSubdomain + APP_ROUTER_DOMAIN_NAME);
     }
 
     @DeleteMapping("/{tenantId}")
