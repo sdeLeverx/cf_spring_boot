@@ -12,7 +12,6 @@ import uz.jamshid.java.exception.NotAuthorizedException;
 
 @RestController
 @RequestMapping(path = "")
-
 public class MainController {
 
     @GetMapping(path = "/")
