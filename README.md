@@ -76,6 +76,16 @@ In order to get environment variables for OAuth 2.0, we shoould run following co
 ```bash
 cf env app_name_here
 ```
+[XSUAA](https://help.sap.com/docs/btp/sap-business-technology-platform/set-up-your-application-for-multitenancy)
+
+## Logging service
+
+```bash
+cf create-service application-logs lite my-logs
+
+cf bind-service java my-logs
+```
+[Logging service](https://help.sap.com/docs/application-logging-service/sap-application-logging-service/sap-application-logging-service-for-cloud-foundry-environment)
 
 ## Contributing
 
