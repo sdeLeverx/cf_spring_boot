@@ -3,7 +3,7 @@
   "appUrls": {
     "onSubscription" : "https://java-grateful-toucan-ez.cfapps.us10-001.hana.ondemand.com/api/v1/callback/tenant/{tenantId}"
   },
-  "displayName" : "Product List MTA",
-  "description" : "Product list MTA sample application",
+  "displayName" : "CF app",
+  "description" : "CF sample application",
   "category" : "Custom SaaS Applications"
 }

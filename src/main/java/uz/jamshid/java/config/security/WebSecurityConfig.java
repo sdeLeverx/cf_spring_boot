@@ -21,17 +21,13 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
                 .sessionManagement()
-                // session is created by approuter
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                // demand specific scopes depending on intended request
                 .authorizeRequests()
-
-                .antMatchers("/**").authenticated()
-                .anyRequest().denyAll() // deny anything not configured above
+                .antMatchers("/actuator/*").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .oauth2ResourceServer().jwt()
                 .jwtAuthenticationConverter(getJwtAuthoritiesConverter());

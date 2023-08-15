@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+//@EnableAutoConfiguration(exclude = {
+//        LiquibaseAutoConfiguration.class,
+//})
 public class HibernateConfig {
 
     @Bean

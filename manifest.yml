@@ -9,13 +9,17 @@ applications:
     path: ./target/java-0.0.1-SNAPSHOT.jar
     buildpacks:
       - sap_java_buildpack
+    JBP_CONFIG_JAVA_OPTS: "[java_opts: '-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n,onjcmd=y']"
     env:
+      JBP_CONFIG_SAP_MACHINE_JDK: "[default_debug_agent_active: false]"
       TARGET_RUNTIME: tomcat
       JBP_CONFIG_COMPONENTS: "jres: ['com.sap.xs.java.buildpack.jdk.SAPMachineJDK']"
       JBP_CONFIG_DEBUG: '{enabled: true}'
     services:
       - javauaa
       - saas-registry
+      - my-logs
+      - sample_db
   - name: web
     routes:
       - route: web-generous-crane-ut.cfapps.us10-001.hana.ondemand.com
