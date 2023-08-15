@@ -76,7 +76,32 @@ In order to get environment variables for OAuth 2.0, we shoould run following co
 ```bash
 cf env app_name_here
 ```
+[XSUAA](https://help.sap.com/docs/btp/sap-business-technology-platform/set-up-your-application-for-multitenancy)
 
+## Logging service
+
+```bash
+cf create-service application-logs lite my-logs
+
+cf bind-service java my-logs
+```
+[Logging service](https://help.sap.com/docs/application-logging-service/sap-application-logging-service/sap-application-logging-service-for-cloud-foundry-environment)
+
+## Postgres
+
+```bash
+cf enable-ssh java   
+
+cf create-service-key sample_db access_key
+
+cf service-key sample_db access_key
+
+cf ssh -L 63306:postgres-5046e197-09e6-477d-ac29-3c8ad840c475.cqryblsdrbcs.us-east-1.rds.amazonaws.com:5852 java
+
+```
+[SSL](https://blogs.sap.com/2023/06/19/sap-btp-postgresql-ssh-tunnel-and-ssh-tunneling-explained/)
+
+[Postgres](https://blogs.sap.com/2023/07/12/how-to-connect-postgres-from-sap-btp-to-local-playground/)
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
